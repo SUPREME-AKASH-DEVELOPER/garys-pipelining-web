@@ -7,14 +7,10 @@ export function ServiceCard({ service, large = false }: { service: Service; larg
   return (
     <Link
       href={`/services/${service.slug}`}
-      className={`surface-card surface-card-hover group relative flex flex-col overflow-hidden p-7 ${
+      className={`surface-card surface-card-hover group relative flex flex-col overflow-hidden p-7 transition-colors duration-300 hover:!border-primary ${
         large ? "lg:col-span-2 lg:flex-row lg:items-end lg:gap-10 lg:p-10" : ""
       }`}
     >
-      <span
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100"
-      />
       {service.featured && (
         <span className="absolute right-7 top-7 inline-flex items-center rounded-full bg-yellow px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-yellow-foreground lg:right-10 lg:top-10">
           Popular
