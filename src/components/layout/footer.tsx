@@ -34,7 +34,7 @@ export function Footer() {
     <footer className="relative overflow-hidden text-white" style={{ background: "var(--gradient-hero)" }}>
       <div aria-hidden className="absolute inset-0 mesh-overlay opacity-40" />
       <FooterSparkleField />
-      <div className="container-px relative mx-auto max-w-[1400px] py-20">
+      <div className="container-px relative mx-auto max-w-[1400px] pb-32 pt-20 lg:py-20">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_2fr]">
           <div>
             <Logo />
@@ -126,7 +126,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 border-t border-white/10 pt-8 md:grid-cols-[1fr_auto] md:items-center">
+        <div className="mt-8 grid gap-4 border-t border-white/10 pt-8 md:grid-cols-[1fr_auto] md:items-center md:pr-24 xl:pr-0">
           <p className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} {siteConfig.legalName}. Licensed &amp; insured. All rights reserved.
           </p>

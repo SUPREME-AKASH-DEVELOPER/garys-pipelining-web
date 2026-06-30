@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import backgroundTexture from "../../public/background/BACK.png";
 import {
   Phone,
   ShieldCheck,
@@ -23,6 +22,7 @@ import { TrustStrip } from "@/components/sections/trust-strip";
 import { BeforeAfterSlider } from "@/components/sections/before-after-slider";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { HomeCoverageSection } from "@/components/sections/home-coverage-section";
+import { TestimonialCarousel } from "@/components/sections/testimonial-carousel";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { EstimateForm } from "@/components/forms/estimate-form";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -69,15 +69,13 @@ export default function Home() {
 
       {/* HERO + TRUST STRIP background wrapper */}
       <div className="relative overflow-hidden">
-        <Image src={backgroundTexture} alt="" aria-hidden fill className="pointer-events-none -translate-x-10 scale-110 object-cover opacity-[0.22]" />
-
         {/* HERO */}
         <section className="relative overflow-hidden pb-20 pt-32 md:pb-28 md:pt-40">
           <div aria-hidden className="absolute inset-0 -z-10 grid-bg" />
-          <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[680px] mesh-overlay opacity-60" />
+          <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[680px] mesh-overlay opacity-35" />
 
         <div className="container-px mx-auto max-w-[1400px]">
-          <div className="grid items-end gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <div className="animate-fade-up">
               <span className="chip">
                 <span className="relative flex h-2 w-2">
@@ -88,7 +86,7 @@ export default function Home() {
               </span>
 
               <h1 className="mt-6 text-[44px] leading-[1.02] tracking-tight md:text-[68px] lg:text-[84px]">
-                No dig. <span className="italic text-primary">No mess.</span> Fixed fast.
+                No dig. <span className="font-extrabold text-primary whitespace-nowrap">No&nbsp;mess.</span> Fixed fast.
               </h1>
 
               <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -107,17 +105,20 @@ export default function Home() {
                 </a>
               </div>
 
-              <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">
+              <ul className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">
                 {trustStats.map((s) => (
-                  <div key={s.label}>
-                    <dt className="break-words font-display text-2xl text-ink sm:text-3xl md:break-normal md:text-4xl">{s.value}</dt>
-                    <dd className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.label}</dd>
-                  </div>
+                  <li key={s.label} className="flex flex-col items-start gap-3">
+                    <Image src={s.icon} alt="" aria-hidden width={88} height={88} className="h-[88px] w-[88px] shrink-0" />
+                    <div>
+                      <div className="text-sm font-semibold leading-tight text-ink">{s.value}</div>
+                      <div className="mt-1 text-xs leading-snug text-muted-foreground">{s.label}</div>
+                    </div>
+                  </li>
                 ))}
-              </dl>
+              </ul>
             </div>
 
-            <div className="relative animate-fade-in-slow" style={{ transform: "translateY(15px)" }}>
+            <div className="relative animate-fade-in-slow">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[var(--shadow-premium)]">
                 <Image
                   src="/photos/real/job-02.webp"
@@ -167,7 +168,7 @@ export default function Home() {
         <div className="container-px mx-auto max-w-[1400px]">
           <Reveal className="mx-auto max-w-3xl text-center">
             <p className="text-balance font-display text-2xl leading-snug tracking-tight text-ink md:text-4xl">
-              Most of what we do happens <span className="italic text-primary">underground, out of sight</span>.
+              Most of what we do happens <span className="font-extrabold text-primary">underground, out of sight</span>.
               You only ever see the result.
             </p>
           </Reveal>
@@ -181,7 +182,7 @@ export default function Home() {
             <div>
               <span className="chip">Services</span>
               <h2 className="mt-5 max-w-2xl text-balance text-4xl leading-[1.05] md:text-6xl">
-                Everything your sewer line needs. <span className="italic text-muted-foreground">Nothing it doesn&rsquo;t.</span>
+                Everything your sewer line needs. <span className="text-muted-foreground">Nothing it doesn&rsquo;t.</span>
               </h2>
             </div>
             <Link href="/services" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary link-underline">
@@ -205,7 +206,7 @@ export default function Home() {
           <Reveal className="max-w-3xl">
             <span className="chip">Technology</span>
             <h2 className="mt-5 text-balance text-4xl leading-[1.05] md:text-6xl">
-              Modern equipment. <span className="italic text-muted-foreground">Old-school craft.</span>
+              Modern equipment. <span className="text-muted-foreground">Old-school craft.</span>
             </h2>
             <p className="mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
               We invest in the equipment that makes the job cleaner, faster, and longer-lasting, so you get a result
@@ -239,7 +240,7 @@ export default function Home() {
             ].map((t, i) => (
               <Reveal key={t.name} delay={i * 0.05}>
                 <article
-                  className={`grid items-stretch gap-6 overflow-hidden rounded-[2rem] border border-border bg-surface-elevated lg:grid-cols-2 ${
+                  className={`skeu-card grid items-stretch gap-6 overflow-hidden rounded-[2rem] lg:grid-cols-2 ${
                     i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
                   }`}
                 >
@@ -333,7 +334,7 @@ export default function Home() {
                 Why Gary&rsquo;s
               </span>
               <h2 className="mt-5 max-w-3xl text-balance text-4xl leading-[1.05] md:text-6xl" style={{ color: "white" }}>
-                The difference is in how we work, <span className="italic" style={{ color: "var(--color-yellow)" }}>not just what we do.</span>
+                The difference is in how we work, <span className="font-extrabold" style={{ color: "var(--color-yellow)" }}>not just what we do.</span>
               </h2>
             </div>
             <Link href="/contact" className="btn-yellow w-fit">
@@ -420,7 +421,7 @@ export default function Home() {
             <div>
               <span className="chip">FAQ</span>
               <h2 className="mt-5 text-balance text-4xl leading-[1.05] md:text-6xl">
-                Questions, <span className="italic text-muted-foreground">answered.</span>
+                Questions, <span className="text-muted-foreground">answered.</span>
               </h2>
               <p className="mt-6 text-pretty text-muted-foreground">
                 Don&rsquo;t see yours here? Call us, we&rsquo;ll talk through it without a sales pitch.
@@ -439,14 +440,14 @@ export default function Home() {
         <div className="container-px mx-auto max-w-[1400px]">
           <Reveal>
           <div className="grid gap-10 overflow-hidden rounded-[2.5rem] lg:grid-cols-[1.05fr_1fr]" style={{ background: "var(--gradient-hero)" }}>
-            <div className="relative p-10 md:p-14">
+            <div className="relative flex flex-col p-10 md:p-14">
               <div aria-hidden className="absolute inset-0 mesh-overlay opacity-50" />
               <div className="relative">
                 <span className="chip" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.85)" }}>
                   Free estimate
                 </span>
                 <h2 className="mt-5 text-balance text-4xl leading-[1.05] md:text-5xl lg:text-6xl" style={{ color: "white" }}>
-                  Tell us what&rsquo;s wrong. <span className="italic" style={{ color: "var(--color-yellow)" }}>We&rsquo;ll tell you what&rsquo;s right.</span>
+                  Tell us what&rsquo;s wrong. <span className="font-extrabold" style={{ color: "var(--color-yellow)" }}>We&rsquo;ll tell you what&rsquo;s right.</span>
                 </h2>
                 <p className="mt-6 max-w-md text-pretty text-white/70">
                   Same-day callbacks during business hours. After hours? Use the emergency line below for live dispatch.
@@ -479,11 +480,19 @@ export default function Home() {
                   <Phone className="h-4 w-4" /> 24/7 Emergency Line
                 </a>
               </div>
+
+              <div className="relative mt-10 hidden flex-1 flex-col justify-center lg:flex">
+                <TestimonialCarousel orientation="vertical" />
+              </div>
             </div>
 
             <div className="bg-surface-elevated p-8 md:p-12">
               <EstimateForm />
             </div>
+          </div>
+
+          <div className="mt-10 rounded-[2.5rem] p-8 md:p-10 lg:hidden" style={{ background: "var(--gradient-hero)" }}>
+            <TestimonialCarousel orientation="horizontal" />
           </div>
           </Reveal>
         </div>

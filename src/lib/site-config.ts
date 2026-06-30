@@ -28,7 +28,7 @@ export const siteConfig = {
 } as const;
 
 export const trustStats = [
-  { value: "24/7", label: "Emergency response" },
-  { value: "100%", label: "Licensed & insured crew" },
-  { value: "Trenchless", label: "Our default method" },
+  { value: "24/7", label: "Emergency response", icon: "/brand/credibility/emergency.svg" },
+  { value: "100%", label: "Licensed & insured crew", icon: "/brand/credibility/licensed-insured.svg" },
+  { value: "Trenchless", label: "Our default method", icon: "/brand/credibility/trenchless.svg" },
 ] as const;

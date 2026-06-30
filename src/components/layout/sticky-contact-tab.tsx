@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export function StickyContactTab() {
   return (
-    <div className="fixed right-0 top-28 z-40 hidden flex-col gap-2 lg:flex">
+    <div className="fixed right-0 top-64 z-40 hidden flex-col gap-2 lg:flex">
       <Link
         href="/contact"
         className="group flex flex-col items-center gap-1.5 rounded-l-2xl border-y-2 border-l-2 border-dashed border-yellow-foreground/20 bg-yellow px-3 py-3.5 text-yellow-foreground shadow-[var(--shadow-elevated)] transition-transform duration-300 hover:-translate-x-1"

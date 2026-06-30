@@ -44,7 +44,7 @@ export function LocationPageTemplate({ location }: { location: Location }) {
                 <MapPin className="h-3.5 w-3.5 text-primary" /> {location.isHQ ? "Home base" : "Service area"}
               </span>
               <h1 className="mt-6 text-balance text-[40px] leading-[1.05] tracking-tight md:text-6xl">
-                Sewer &amp; drain experts serving <span className="italic text-primary">{location.city}, WA</span>
+                Sewer &amp; drain experts serving <span className="font-extrabold text-primary">{location.city}, WA</span>
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">{location.intro}</p>
               <div className="mt-9 flex flex-wrap items-center gap-3">

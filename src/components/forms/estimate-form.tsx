@@ -73,7 +73,7 @@ export function EstimateForm({ defaultService }: { defaultService?: string }) {
           <input
             {...register("name")}
             placeholder="Jane Smith"
-            className="w-full rounded-2xl border border-border bg-background px-4 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+            className="w-full rounded-full border border-border bg-background px-5 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </Field>
         <Field label="Phone" required error={errors.phone?.message}>
@@ -81,7 +81,7 @@ export function EstimateForm({ defaultService }: { defaultService?: string }) {
             {...register("phone")}
             type="tel"
             placeholder="(206) 555-0123"
-            className="w-full rounded-2xl border border-border bg-background px-4 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+            className="w-full rounded-full border border-border bg-background px-5 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
           />
         </Field>
       </div>
@@ -91,7 +91,7 @@ export function EstimateForm({ defaultService }: { defaultService?: string }) {
           {...register("email")}
           type="email"
           placeholder="you@example.com"
-          className="w-full rounded-2xl border border-border bg-background px-4 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+          className="w-full rounded-full border border-border bg-background px-5 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
       </Field>
 
@@ -99,7 +99,7 @@ export function EstimateForm({ defaultService }: { defaultService?: string }) {
         <input
           {...register("address")}
           placeholder="123 Main St, City"
-          className="w-full rounded-2xl border border-border bg-background px-4 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+          className="w-full rounded-full border border-border bg-background px-5 py-3.5 text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
       </Field>
 

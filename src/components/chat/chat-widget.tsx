@@ -6,7 +6,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Send, Phone, ArrowUpRight, Mail } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import chatbotAvatar from "../../../public/chatbot/chatbot-avatar.png";
+import chatbotAvatar from "../../../public/chatbot/chatbot-avatar.jpg";
 
 type Message = {
   id: string;
@@ -243,33 +243,7 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-20 right-4 z-50 lg:bottom-6 lg:right-6">
-      {/* Proactive teaser bubble */}
-      <AnimatePresence>
-        {teaser && !open && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.25 }}
-            className="mb-3 flex max-w-[230px] items-start gap-2 rounded-2xl rounded-br-md border border-border bg-surface-elevated p-3.5 pr-2.5 shadow-[var(--shadow-elevated)]"
-          >
-            <BotAvatar />
-            <p className="flex-1 text-sm leading-snug text-foreground">
-              Got a sewer or drain question? I can help, or connect you to a real person.
-            </p>
-            <button
-              type="button"
-              aria-label="Dismiss"
-              onClick={() => setTeaser(false)}
-              className="grid h-5 w-5 shrink-0 place-items-center rounded-full text-muted-foreground hover:bg-secondary hover:text-foreground"
-            >
-              <X className="h-3 w-3" />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+    <div className="fixed bottom-[104px] right-4 z-50 lg:bottom-6 lg:right-6">
       {/* Chat panel */}
       <AnimatePresence>
         {open && (
@@ -399,51 +373,78 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* Launcher (hidden while the panel is open, the panel has its own close button) */}
-      <AnimatePresence>
-        {!open && (
-          <motion.button
-            type="button"
-            onClick={() => {
-              setOpen(true);
-              setTeaser(false);
-              setUnread(0);
-            }}
-            aria-label="Open chat"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.92 }}
-            className="group relative grid h-14 w-14 place-items-center overflow-hidden rounded-full text-white shadow-[var(--shadow-premium)] lg:h-[108px] lg:w-[108px]"
-          >
-            <span
-              aria-hidden
-              className="absolute inset-0 z-10 rounded-full"
-              style={{
-                boxShadow: "0 0 0 0 color-mix(in oklab, var(--color-primary) 55%, transparent)",
-                animation: "pulse-ring 2.6s ease-out infinite",
-                border: "2px solid color-mix(in oklab, var(--color-primary) 45%, transparent)",
+      {/* Teaser bubble + launcher, side by side, bottom-aligned */}
+      <div className="flex items-center justify-end gap-3">
+        <AnimatePresence>
+          {teaser && !open && (
+            <motion.div
+              initial={{ opacity: 0, x: 10, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 10, scale: 0.95 }}
+              transition={{ duration: 0.25 }}
+              className="flex max-w-[230px] items-start gap-2 rounded-2xl rounded-br-md border border-border bg-surface-elevated p-3.5 pr-2.5 shadow-[var(--shadow-elevated)]"
+            >
+              <p className="flex-1 text-sm leading-snug text-foreground">
+                Got a sewer or drain question? I can help, or connect you to a real person.
+              </p>
+              <button
+                type="button"
+                aria-label="Dismiss"
+                onClick={() => setTeaser(false)}
+                className="grid h-5 w-5 shrink-0 place-items-center rounded-full text-muted-foreground hover:bg-secondary hover:text-foreground"
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Launcher (hidden while the panel is open, the panel has its own close button) */}
+        <AnimatePresence>
+          {!open && (
+            <motion.button
+              type="button"
+              onClick={() => {
+                setOpen(true);
+                setTeaser(false);
+                setUnread(0);
               }}
-            />
-            <Image
-              src={chatbotAvatar}
-              alt="Chat with Gary's Pipelining"
-              fill
-              sizes="(min-width: 1024px) 108px, 56px"
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            {unread > 0 ? (
-              <span className="absolute -right-0.5 -top-0.5 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-emergency text-[9px] font-bold text-white lg:-right-1 lg:-top-1 lg:h-6 lg:w-6 lg:text-[11px]">
-                {unread}
-              </span>
-            ) : (
-              <span className="absolute -right-0 -top-0 h-3 w-3 rounded-full border-2 border-background bg-yellow lg:-right-0.5 lg:-top-0.5 lg:h-[18px] lg:w-[18px]" />
-            )}
-          </motion.button>
-        )}
-      </AnimatePresence>
+              aria-label="Open chat"
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.92 }}
+              className="group relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-full text-white shadow-[0_0_0_2.7px_var(--color-yellow),0_0_0_5.4px_var(--color-primary),var(--shadow-premium)] lg:h-[84px] lg:w-[84px]"
+            >
+              <span
+                aria-hidden
+                className="absolute inset-0 z-10 rounded-full"
+                style={{
+                  boxShadow: "0 0 0 0 color-mix(in oklab, var(--color-primary) 55%, transparent)",
+                  animation: "pulse-ring 2.6s ease-out infinite",
+                  border: "2px solid color-mix(in oklab, var(--color-primary) 45%, transparent)",
+                }}
+              />
+              <Image
+                src={chatbotAvatar}
+                alt="Chat with Gary's Pipelining"
+                fill
+                sizes="(min-width: 1024px) 84px, 56px"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              {unread > 0 ? (
+                <span className="absolute -right-0.5 -top-0.5 grid h-4 w-4 place-items-center rounded-full border-2 border-background bg-emergency text-[9px] font-bold text-white lg:-right-1 lg:-top-1 lg:h-6 lg:w-6 lg:text-[11px]">
+                  {unread}
+                </span>
+              ) : (
+                <span className="absolute -right-0 -top-0 h-3 w-3 rounded-full border-2 border-background bg-yellow lg:-right-0.5 lg:-top-0.5 lg:h-[18px] lg:w-[18px]" />
+              )}
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

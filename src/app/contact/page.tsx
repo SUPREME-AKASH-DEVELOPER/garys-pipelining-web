@@ -4,6 +4,7 @@ import { ChevronRight, Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-r
 import { siteConfig } from "@/lib/site-config";
 import { EstimateForm } from "@/components/forms/estimate-form";
 import { Reveal } from "@/components/ui/reveal";
+import { TestimonialCarousel } from "@/components/sections/testimonial-carousel";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -38,7 +39,7 @@ export default async function ContactPage({
       <section className="pb-24 md:pb-32">
         <div className="container-px mx-auto max-w-[1400px]">
           <div className="grid gap-10 overflow-hidden rounded-[2.5rem] lg:grid-cols-[1fr_1.1fr]" style={{ background: "var(--gradient-hero)" }}>
-            <div className="relative p-10 md:p-14">
+            <div className="relative flex flex-col p-10 md:p-14">
               <div aria-hidden className="absolute inset-0 mesh-overlay opacity-50" />
               <div className="relative">
                 <h2 className="text-balance text-3xl leading-[1.05] md:text-4xl" style={{ color: "white" }}>
@@ -82,11 +83,19 @@ export default async function ContactPage({
                   <Phone className="h-4 w-4" /> 24/7 Emergency Line
                 </a>
               </div>
+
+              <div className="relative mt-10 hidden flex-1 flex-col justify-center lg:flex">
+                <TestimonialCarousel orientation="vertical" />
+              </div>
             </div>
 
             <div className="bg-surface-elevated p-8 md:p-12">
               <EstimateForm defaultService={service} />
             </div>
+          </div>
+
+          <div className="mt-10 rounded-[2.5rem] p-8 md:p-10 lg:hidden" style={{ background: "var(--gradient-hero)" }}>
+            <TestimonialCarousel orientation="horizontal" />
           </div>
         </div>
       </section>

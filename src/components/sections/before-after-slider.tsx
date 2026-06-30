@@ -16,7 +16,7 @@ export function BeforeAfterSlider() {
               <Leaf className="h-3.5 w-3.5" /> Before / After
             </span>
             <h2 className="mt-5 text-balance text-4xl leading-[1.05] md:text-6xl">
-              Same problem. <span className="italic text-muted-foreground">No trench.</span>
+              Same problem. <span className="text-muted-foreground">No trench.</span>
             </h2>
             <p className="mt-6 text-pretty text-lg text-muted-foreground">
               The biggest reason homeowners choose trenchless isn&rsquo;t the pipe, it&rsquo;s everything that
@@ -53,8 +53,8 @@ export function BeforeAfterSlider() {
               <div className="pointer-events-none absolute top-0 bottom-0" style={{ left: `calc(${pos}% - 1px)` }}>
                 <div className="h-full w-0.5 bg-white/90" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white text-ink shadow-lg">
-                  <ArrowRight className="h-4 w-4 -rotate-180" />
-                  <ArrowRight className="absolute h-4 w-4 translate-x-3" />
+                  <ArrowRight className="absolute left-1/2 top-1/2 h-4 w-4" style={{ transform: "translate(calc(-50% - 6px), -50%) rotate(180deg)" }} />
+                  <ArrowRight className="absolute left-1/2 top-1/2 h-4 w-4" style={{ transform: "translate(calc(-50% + 6px), -50%)" }} />
                 </div>
               </div>
 

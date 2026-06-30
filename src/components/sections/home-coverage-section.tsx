@@ -21,7 +21,7 @@ export function HomeCoverageSection({ locations }: { locations: Location[] }) {
           <div>
             <span className="chip">Service area</span>
             <h2 className="mt-5 text-balance text-4xl leading-[1.05] md:text-5xl">
-              Proudly covering the <span className="italic text-primary">greater Seattle area.</span>
+              Proudly covering the <span className="font-extrabold text-primary">greater Seattle area.</span>
             </h2>
             <p className="mt-6 max-w-md text-pretty text-[15px] leading-relaxed text-muted-foreground">
               Based in Tukwila, our crews run regular routes across King and Pierce counties, with the same

@@ -186,18 +186,18 @@ export function Header() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-4"}`}>
-      <div className="container-px mx-auto max-w-[1400px]">
+      <div className="container-px relative mx-auto max-w-[1400px]">
         <div
-          className={`relative grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-[1.75rem] px-4 pt-3.5 pb-[4px] transition-all duration-500 ${
+          className={`relative grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-full px-4 pt-3.5 pb-[4px] transition-all duration-500 ${
             scrolled ? "shadow-[var(--shadow-elevated)]" : "shadow-[var(--shadow-soft)]"
           }`}
         >
           <div
             aria-hidden
-            className="header-glow-fx absolute inset-0 rounded-[1.75rem]"
+            className="header-glow-fx absolute inset-0 rounded-full"
             style={{ background: "var(--gradient-hero)", border: "1px solid color-mix(in oklab, white 10%, transparent)" }}
           />
-          <div aria-hidden className="absolute inset-0 hidden overflow-hidden rounded-[1.75rem] lg:block">
+          <div aria-hidden className="absolute inset-0 hidden overflow-hidden rounded-full lg:block">
             {headerStars.map((s, i) => (
               <Sparkle
                 key={`star-${i}`}
@@ -214,7 +214,7 @@ export function Header() {
             ))}
           </div>
 
-          <div onDoubleClick={() => router.push("/")} className="relative z-10 col-start-1 flex origin-bottom scale-x-[1.41667] scale-y-[1.45833] translate-x-[22px] translate-y-[14px]">
+          <div onDoubleClick={() => router.push("/")} className="relative z-10 col-start-1 flex origin-bottom translate-x-[30px] translate-y-[20px] scale-[1.45833]">
             <Logo size="header" />
           </div>
 
@@ -287,13 +287,6 @@ export function Header() {
               Free estimate
               <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <span
-              className={`pointer-events-none absolute right-0 top-full mt-2 hidden whitespace-nowrap rounded-lg border border-border bg-surface px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary shadow-[var(--shadow-soft)] transition-all duration-300 sm:block ${
-                showBadge ? "opacity-100 translate-y-0" : "-translate-y-1 opacity-0"
-              }`}
-            >
-              Contractor partnership welcome
-            </span>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -305,6 +298,14 @@ export function Header() {
             </button>
           </div>
         </div>
+
+        <span
+          className={`pointer-events-none absolute right-[170px] top-full z-10 mt-[-12px] hidden whitespace-nowrap rounded-full border border-border bg-surface px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-primary shadow-[var(--shadow-soft)] transition-all duration-300 sm:block ${
+            showBadge ? "opacity-100 translate-y-0" : "-translate-y-1 opacity-0"
+          }`}
+        >
+          Contractor partnership welcome
+        </span>
 
         <AnimatePresence>
           {open && (

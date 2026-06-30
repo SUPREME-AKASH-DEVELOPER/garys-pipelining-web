@@ -257,6 +257,21 @@
   }
 }
 
+@utility skeu-card {
+  position: relative;
+  background: linear-gradient(180deg, oklch(1 0 0) 0%, oklch(0.985 0.005 250) 100%);
+  border: 1px solid var(--color-border);
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.9), inset 0 -1px 0 0 rgb(15 23 42 / 0.045), 0 1px 2px rgb(15 23 42 / 0.04),
+    0 16px 32px -16px rgb(15 42 95 / 0.18);
+  transition: box-shadow 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s;
+  &:hover {
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.9), inset 0 -1px 0 0 rgb(15 23 42 / 0.05), 0 2px 4px rgb(15 23 42 / 0.05),
+      0 28px 56px -18px rgb(15 42 95 / 0.24);
+    transform: translateY(-3px);
+    border-color: var(--color-border-strong);
+  }
+}
+
 @utility hero-gradient {
   background: var(--gradient-hero);
 }
@@ -378,24 +393,26 @@
   gap: 0.5rem;
   padding: 0.95rem 1.5rem;
   border-radius: 999px;
-  background: var(--color-emergency);
-  color: var(--color-emergency-foreground);
+  border: 2px solid var(--color-primary);
+  background: var(--color-yellow);
+  color: var(--color-yellow-foreground);
   font-weight: 600;
   letter-spacing: -0.005em;
-  box-shadow: 0 10px 24px -10px color-mix(in oklab, var(--color-emergency) 70%, transparent), 0 0 0 0 color-mix(in oklab, var(--color-emergency) 60%, transparent);
-  transition: transform 0.2s, box-shadow 0.25s, background 0.25s;
+  box-shadow: 0 10px 24px -10px color-mix(in oklab, var(--color-yellow) 70%, transparent), 0 0 0 0 color-mix(in oklab, var(--color-yellow) 60%, transparent);
+  transition: transform 0.2s, box-shadow 0.25s, background 0.25s, filter 0.25s;
   position: relative;
   &::after {
     content: "";
     position: absolute;
     inset: -4px;
     border-radius: inherit;
-    border: 2px solid color-mix(in oklab, var(--color-emergency) 50%, transparent);
+    border: 2px solid color-mix(in oklab, var(--color-yellow) 50%, transparent);
     opacity: 0;
     animation: pulse-ring 2.4s ease-out infinite;
   }
   &:hover {
     transform: translateY(-1px);
+    filter: brightness(1.03);
   }
   &:active {
     transform: scale(0.97);
@@ -456,9 +473,15 @@
 }
 @utility marquee-track {
   animation: marquee 40s linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation-play-state: paused;
+  }
 }
 @utility marquee-track-rtl {
   animation: marquee-rtl 28s linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation-play-state: paused;
+  }
 }
 
 @utility link-underline {

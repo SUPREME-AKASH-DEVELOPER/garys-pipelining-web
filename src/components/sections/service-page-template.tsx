@@ -150,7 +150,7 @@ export function ServicePageTemplate({ service }: { service: Service }) {
             <div>
               <span className="chip">FAQ</span>
               <h2 className="mt-5 text-balance text-4xl leading-[1.05] md:text-5xl">
-                Questions about <span className="italic text-muted-foreground">{service.name.toLowerCase()}.</span>
+                Questions about <span className="text-muted-foreground">{service.name.toLowerCase()}.</span>
               </h2>
               <a href={siteConfig.phoneHref} className="btn-ghost mt-8">
                 <Phone className="h-4 w-4" /> {siteConfig.phone}
